@@ -1,0 +1,189 @@
+:root {
+  --paper: #ecf0ec;
+  --paper-deep: #dfe6e1;
+  --ink: #14262e;
+  --muted: #4f6166;
+  --petrol: #0e4a5a;
+  --ochre: #8a5a12;
+  --ochre-bright: #b7791f;
+  --line: #c3cfc9;
+  --focus: #0e4a5a;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --text: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #10201f;
+    --paper-deep: #17302f;
+    --ink: #e4ebe7;
+    --muted: #a3b4b1;
+    --petrol: #7cc4cf;
+    --ochre: #e7b55b;
+    --ochre-bright: #e7b55b;
+    --line: #2c4544;
+    --focus: #e7b55b;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--text);
+}
+
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+a { color: var(--petrol); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--paper); padding: 0.5rem 0.75rem; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0; }
+h2 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; margin-bottom: 1.5rem; }
+h3 { font-size: 1.3rem; font-weight: 500; }
+
+section, footer { padding-block: 4rem; }
+
+/* ---------- Topo ---------- */
+
+.hero { padding-block: 5rem 3rem; }
+
+.hero-name { margin: 0 0 0.75rem; font-weight: 600; color: var(--muted); }
+
+.hero h1 {
+  font-size: clamp(2.3rem, 1.4rem + 4.2vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* A pilha fica numa segunda linha inteira; o "·" entre as linhas é só para leitores de tela. */
+.h1-stack { display: block; }
+
+.lede { font-size: 1.2rem; max-width: 36rem; margin: 1.5rem 0 2rem; }
+
+.hero-links, .contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; }
+
+/* ---------- Projetos ---------- */
+
+.project { padding-block: 1.5rem; border-top: 1px solid var(--line); }
+.project:last-child { border-bottom: 1px solid var(--line); }
+.project h3 { font-size: 1.6rem; }
+.project h3 a { color: var(--ink); text-decoration: none; }
+.project h3 a:hover, .project h3 a:focus-visible { color: var(--petrol); text-decoration: underline; }
+.project p { margin: 0.6rem 0 0; max-width: 38rem; }
+.project .stack { color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- Demo: a frase é o formulário ---------- */
+
+.demo { background: var(--paper-deep); }
+
+.sentence p {
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 1.1rem + 1.6vw, 2.1rem);
+  line-height: 1.7;
+  font-weight: 500;
+  margin: 0;
+}
+
+.field { white-space: nowrap; color: var(--ochre); }
+
+.field input {
+  font: inherit;
+  color: var(--ochre);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--ochre-bright);
+  padding: 0 0.15em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  max-width: 100%;
+}
+
+.field input:focus-visible { outline-offset: 2px; }
+.field input[aria-invalid="true"] { border-bottom-style: dashed; }
+
+.error { color: var(--ochre); font-weight: 600; min-height: 1.6em; margin: 0.75rem 0; }
+.error:empty { visibility: hidden; }
+
+button {
+  font: 600 1rem var(--text);
+  color: var(--paper);
+  background: var(--petrol);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: progress; }
+
+.result { margin-top: 2rem; }
+.result:empty { display: none; }
+
+.result table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.result caption { text-align: left; color: var(--muted); padding-bottom: 0.75rem; }
+.result th, .result td { text-align: right; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--line); }
+.result th:first-child, .result td:first-child { text-align: left; padding-left: 0; }
+.result thead th { font-weight: 500; color: var(--muted); font-size: 0.9rem; }
+.result tbody tr:first-child td { font-weight: 600; }
+.result .money { color: var(--ochre); font-family: var(--display); font-size: 1.25rem; }
+.result .unavailable { margin: 0; font-weight: 600; }
+
+.note { color: var(--muted); font-size: 0.95rem; margin-top: 1.5rem; }
+
+/* ---------- Experiência ---------- */
+
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 1.75rem 1.5rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -7px; top: 0.45em;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--petrol);
+}
+.timeline li:first-child::before { background: var(--petrol); }
+.timeline time { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.timeline h3 { margin-top: 0.2rem; }
+.timeline p { margin: 0.2rem 0 0; }
+
+/* ---------- Competências ---------- */
+
+.skills { margin: 0; display: grid; gap: 1rem; }
+.skills div { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; }
+.skills dt { font-weight: 600; }
+.skills dd { margin: 0; }
+
+.certs-title { margin-top: 2.5rem; font-size: 1.15rem; }
+.certs { padding-left: 1.2rem; margin: 0.75rem 0 0; }
+
+footer { border-top: 1px solid var(--line); padding-bottom: 5rem; }
+footer h2 { margin-bottom: 0.75rem; }
+footer p { margin: 0 0 1rem; }
+
+@media (max-width: 34rem) {
+  .skills div { grid-template-columns: 1fr; gap: 0.15rem; }
+  .result th, .result td { padding-inline: 0.3rem; font-size: 0.9rem; }
+  .result .money { font-size: 1.05rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .result:not(:empty) { animation: settle 280ms ease-out; }
+  @keyframes settle { from { opacity: 0; transform: translateY(4px); } }
+}

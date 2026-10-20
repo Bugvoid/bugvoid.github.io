@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luan Castro Alves · Backend Developer</title>
+  <meta name="description" content="Desenvolvedor backend .NET, Python e AWS, com 5 anos construindo software para dados do mercado financeiro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bugvoid.github.io/">
+  <meta property="og:title" content="Luan Castro Alves · Backend Developer">
+  <meta property="og:description" content="Motor de crédito em .NET, simulador de renda fixa serverless na AWS e 5 anos de software para o mercado financeiro.">
+  <meta property="og:image" content="https://bugvoid.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="demo.js"></script>
+</head>
+<body>
+  <a class="skip" href="#projetos">Pular para os projetos</a>
+
+  <header class="hero wrap">
+    <p class="hero-name">Luan Castro Alves</p>
+    <h1>Backend Developer<span class="sr"> · </span><span class="h1-stack">.NET · Python · AWS</span></h1>
+    <p class="lede">Desenvolvedor com 5 anos construindo software para dados do mercado financeiro. Hoje na Economatica, provedora de dados e análises de investimentos.</p>
+    <nav class="hero-links" aria-label="Perfis">
+      <a href="https://www.linkedin.com/in/luan-castro-alves">LinkedIn</a>
+      <a href="https://github.com/Bugvoid">GitHub</a>
+      <a href="mailto:luancastro_alves@hotmail.com">luancastro_alves@hotmail.com</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="projetos" class="wrap" aria-labelledby="projetos-titulo">
+      <h2 id="projetos-titulo">Projetos</h2>
+
+      <article class="project">
+        <h3><a href="https://github.com/Bugvoid/motor-credito-pj">Motor de Crédito PJ</a></h3>
+        <p>Decide crédito para empresas de médio porte: consulta o CNPJ na Receita, avalia a política de crédito, calcula rating e precifica em CDI + spread com IOF e CET. Cada decisão fica gravada com a versão da política e o motivo de cada regra.</p>
+        <p class="stack">C#, .NET 10, PostgreSQL, SQS (outbox), xUnit, Testcontainers, Docker, GitHub Actions</p>
+      </article>
+
+      <article class="project">
+        <h3><a href="https://github.com/Bugvoid/simulador-renda-fixa">Simulador de Renda Fixa</a></h3>
+        <p>Compara o rendimento líquido de CDB, LCI/LCA e Tesouro Direto com IR regressivo, IOF, custódia da B3 e dias úteis. Busca Selic, CDI e IPCA no Banco Central todo dia. É ele que responde a demo logo abaixo.</p>
+        <p class="stack">Python, AWS Lambda, API Gateway, DynamoDB, EventBridge, Terraform, pytest</p>
+      </article>
+
+      <article class="project">
+        <h3><a href="https://github.com/Bugvoid/Pongo_Financy">Pongo Financy</a></h3>
+        <p>Robôs que coletam dados públicos do mercado brasileiro: informes de FII, FIDC, CRI e CRA no FNET, expectativas Focus do Banco Central, índices do IBGE e séries do IPEA.</p>
+        <p class="stack">Python, Terraform, AWS S3/SNS/SQS, Rundeck</p>
+      </article>
+    </section>
+
+    <section id="demo" class="demo" aria-labelledby="demo-titulo">
+      <div class="wrap">
+        <h2 id="demo-titulo">Quanto rende, de verdade?</h2>
+        <form id="demo-form" class="sentence" novalidate>
+          <p>
+            Se eu aplicar
+            <label class="field"><span class="sr">Valor em reais</span>
+              <span aria-hidden="true">R$</span><input id="amount" name="amount" inputmode="decimal" value="10.000" size="9" aria-describedby="amount-error"></label>
+            por
+            <label class="field"><span class="sr">Prazo em dias</span>
+              <input id="days" name="days" inputmode="numeric" value="730" size="4"></label>
+            dias, rende mais um CDB a
+            <label class="field"><span class="sr">Taxa do CDB em % do CDI</span>
+              <input id="cdb-rate" name="cdb" inputmode="decimal" value="110" size="3"></label>% do CDI
+            ou uma LCI a
+            <label class="field"><span class="sr">Taxa da LCI em % do CDI</span>
+              <input id="lci-rate" name="lci" inputmode="decimal" value="92" size="3"></label>% do CDI?
+          </p>
+          <p id="amount-error" class="error" role="alert"></p>
+          <button id="demo-submit" type="submit">Calcular rendimento líquido</button>
+        </form>
+        <div id="demo-result" class="result" aria-live="polite"></div>
+        <p class="note">Calculado pela <a href="https://github.com/Bugvoid/simulador-renda-fixa">API do simulador</a> na AWS, com IR, IOF, dias úteis e o CDI do dia.</p>
+      </div>
+    </section>
+
+    <section id="experiencia" class="wrap" aria-labelledby="experiencia-titulo">
+      <h2 id="experiencia-titulo">Experiência</h2>
+      <ol class="timeline">
+        <li><time>ago/2021 – hoje</time><h3>Desenvolvedor de software</h3><p>Economatica, São Paulo</p></li>
+        <li><time>mai/2019 – ago/2021</time><h3>Analista de desenvolvimento</h3><p>Comunikime, São Paulo</p></li>
+        <li><time>jan/2017 – mai/2019</time><h3>Analista de suporte de TI</h3><p>Castro Alves Contabilidade, São Paulo</p></li>
+        <li><time>dez/2016 – dez/2017</time><h3>Assistente de suporte de TI</h3><p>Castro Alves Contabilidade, São Paulo</p></li>
+      </ol>
+    </section>
+
+    <section id="competencias" class="wrap" aria-labelledby="competencias-titulo">
+      <h2 id="competencias-titulo">Competências</h2>
+      <dl class="skills">
+        <div><dt>Backend</dt><dd>.NET / C#, Python, APIs REST, mensageria</dd></div>
+        <div><dt>Cloud e AWS</dt><dd>Lambda, API Gateway, EKS, RDS, DynamoDB, SQS, CloudFormation, Terraform</dd></div>
+        <div><dt>Dados</dt><dd>SQL Server, PostgreSQL, MySQL</dd></div>
+        <div><dt>Práticas</dt><dd>Testes automatizados, CI/CD, Docker, Scrum</dd></div>
+      </dl>
+      <h3 class="certs-title">Certificações</h3>
+      <ul class="certs">
+        <li>Claude Code in Action</li>
+        <li>Scrum Foundation Professional Certificate (SFPC)</li>
+        <li>Python</li>
+        <li>JavaScript Algorithms and Data Structures</li>
+        <li>JavaScript Ninja</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer id="contato" class="wrap">
+    <h2>Contato</h2>
+    <p>Aberto a conversas sobre vagas de engenharia de software no mercado financeiro.</p>
+    <p class="contact">
+      <a href="mailto:luancastro_alves@hotmail.com">luancastro_alves@hotmail.com</a>
+      <a href="https://www.linkedin.com/in/luan-castro-alves">LinkedIn</a>
+      <a href="https://github.com/Bugvoid">GitHub</a>
+    </p>
+  </footer>
+</body>
+</html>
