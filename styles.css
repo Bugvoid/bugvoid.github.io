@@ -75,12 +75,10 @@ section, footer { padding-block: 4rem; }
   letter-spacing: -0.02em;
 }
 
-/* A pilha fica numa segunda linha inteira; o "·" entre as linhas é só para leitores de tela. */
-.h1-stack { display: block; }
 
-.lede { font-size: 1.2rem; max-width: 36rem; margin: 1.5rem 0 2rem; }
 
 .hero-links, .contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; }
+.hero-links { margin-top: 1.75rem; }
 
 /* ---------- Projetos ---------- */
 
