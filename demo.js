@@ -3,17 +3,24 @@
 export const API_URL = "";
 export const UNAVAILABLE = "Demo indisponível no momento — veja o código";
 
+const MIN_AMOUNT = 1;
 const MAX_AMOUNT = 10_000_000;
 const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 const pct = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const rate = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
 
-/** Aceita "1000", "1000,50", "1.000,50" e "R$ 1.000,50". Fora de (0, 10 mi] ou inválido → null. */
+/**
+ * Aceita "1000", "1000,50", "1.000,50", "R$ 1.000,50" e também "1000.50" (teclado de celular).
+ * Fora de [1, 10 mi] ou inválido → null.
+ */
 export function parseAmount(text) {
-  const clean = String(text).replace(/R\$|\s/g, "").replace(/\./g, "").replace(",", ".");
-  if (!/^\d+(\.\d{1,2})?$/.test(clean)) return null;
-  const n = Number(clean);
-  return n > 0 && n <= MAX_AMOUNT ? n : null;
+  let s = String(text).replace(/R\$|\s/g, "");
+  if (s.includes(",")) s = s.replace(/\./g, "").replace(",", "."); // 1.000,50
+  else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, ""); // 1.000 e 1.000.000
+  // nos demais casos, "." é o separador decimal: 1000.50, 10.5
+  if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
+  const n = Number(s);
+  return n >= MIN_AMOUNT && n <= MAX_AMOUNT ? n : null;
 }
 
 export const brl = (n) => money.format(n);
